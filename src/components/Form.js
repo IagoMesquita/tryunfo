@@ -4,7 +4,8 @@ import React from 'react';
 class Form extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo, isSaveButtonDisabled, onInputChange } = this.props;
+      cardRare, cardTrunfo, isSaveButtonDisabled, onSaveButtonClick, onInputChange,
+    } = this.props;
     return (
       <form>
         <input
@@ -67,8 +68,8 @@ class Form extends React.Component {
           name="trunfo-input"
         />
         <button
-          disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
+          disabled={ isSaveButtonDisabled }
           data-testid="save-button"
           type="submit"
           name="save-button"
@@ -92,6 +93,7 @@ Form.propTypes = {
   cardRare: PropTypes.bool.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
+  onSaveButtonClick: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
 };
 
