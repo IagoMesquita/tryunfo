@@ -90,7 +90,7 @@ class Form extends React.Component {
         </label>
         <label htmlFor="trunfo">
           <input
-            checked={ cardTrunfo }
+            check={ cardTrunfo }
             onChange={ onInputChange }
             data-testid="trunfo-input"
             type="checkbox"
