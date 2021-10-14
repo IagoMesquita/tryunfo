@@ -17,6 +17,7 @@ class App extends React.Component {
       cardTrunfo: false,
       // hasTrunfo: false,
       isSaveButtonDisabled: false,
+      onSaveButtonClick: false,
     };
   }
 
@@ -31,7 +32,7 @@ class App extends React.Component {
   render() {
     const {
       cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo, isSaveButtonDisabled, onInputChange,
+      cardRare, cardTrunfo, onSaveButtonClick, isSaveButtonDisabled, onInputChange,
     } = this.state;
 
     return (
@@ -46,6 +47,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ onSaveButtonClick }
           onInputChange={ onInputChange }
 
         />
