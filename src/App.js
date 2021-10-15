@@ -1,4 +1,6 @@
 import React from 'react';
+import './App.css';
+import PropTypes from 'prop-types';
 import Form from './components/Form';
 import Card from './components/Card';
 
@@ -7,6 +9,7 @@ class App extends React.Component {
     super();
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.isEmpty = this.isEmpty.bind(this);
     this.state = {
       cardName: '',
       cardDescription: '',
@@ -17,7 +20,7 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       // hasTrunfo: false,
-      isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
       // onSaveButtonClick: false,
     };
   }
@@ -27,8 +30,31 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
+    }, this.isEmpty);
+  }
+
+  isEmpty() {
+    const { cardName, cardDescription, cardImage, cardRare } = this.state;
+
+    const isActive = [
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+    ];
+
+    const activeButtonSave = isActive.every((active) => active.length > 0);
+
+    this.setState({
+      isSaveButtonDisabled: !activeButtonSave,
     });
   }
+
+  // isEmpty() {
+  //   const elementos = [cardName, cardDescription, cardImage, cardRare];
+  //   elementos.forEach(((elemento) => elemento.length > 0
+  //   && this.setState({ isSaveButtonDisabled: false })));
+  // }
 
   render() {
     const {
@@ -37,7 +63,7 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <div>
+      <div className="app">
         <Form
           { ...this.state }
           // cardName={ cardName }
@@ -51,6 +77,7 @@ class App extends React.Component {
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
           onInputChange={ this.onInputChange }
+          isEmpty={ this.isEmpty }
         />
         <Card
           cardName={ cardName }
@@ -66,5 +93,9 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  isEmpty: PropTypes.func.isRequired,
+};
 
 export default App;
