@@ -104,9 +104,15 @@ class App extends React.Component {
     );
   }
 }
-
 App.propTypes = {
+  onInputChange: PropTypes.func.isRequired,
   isEmpty: PropTypes.func.isRequired,
+  maxAttrValue: PropTypes.number.isRequired,
+  maxSumOfValues: PropTypes.number.isRequired,
+  sumAttr: PropTypes.number.isRequired,
+  hasInputString: PropTypes.bool.isRequired,
+  hasInputNumbers: PropTypes.bool.isRequired,
+  ValueSumAreCorrect: PropTypes.bool.isRequired,
+  hasInputValue: PropTypes.bool.isRequired,
 };
-
 export default App;
