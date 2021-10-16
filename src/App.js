@@ -66,16 +66,6 @@ class App extends React.Component {
       isSaveButtonDisabled: !hasInputValue,
     });
   }
-  //   if (hasInputValue === true) {
-  //     this.setState({
-  //       isSaveButtonDisabled: false,
-  //     });
-  //   } else {
-  //     this.setState({
-  //       isSaveButtonDisabled: true,
-  //     });
-  //   }
-  // }
 
   render() {
     const {
