@@ -1,22 +1,24 @@
 .app {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    margin-left: -800px;
-    margin-top: 20px;
-    padding: 10px;
+form {
+  display: flex;
+  flex-direction: column;
+  margin-left: -800px;
+  margin-top: 20px;
+  padding: 10px;
 }
 article {
-    position:fixed;
-    margin-left: 400px;
+  position: fixed;
+  margin-left: 400px;
 }
 
-input, select, button {
-    padding: 5px;
-    border-radius: 5px;
-    margin-top: 8px;
+input,
+select,
+button {
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 8px;
 }
