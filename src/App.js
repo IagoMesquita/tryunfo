@@ -34,27 +34,44 @@ class App extends React.Component {
   }
 
   isEmpty() {
-    const { cardName, cardDescription, cardImage, cardRare } = this.state;
+    const { cardName, cardDescription, cardImage, cardRare,
+      cardAttr1, cardAttr2, cardAttr3,
+    } = this.state;
 
-    const isActive = [
+    const isActiveString = [
       cardName,
       cardDescription,
       cardImage,
       cardRare,
     ];
+    const isActiveNumbers = [
+      Number(cardAttr1),
+      Number(cardAttr2),
+      Number(cardAttr3),
+    ];
 
-    const activeButtonSave = isActive.every((active) => active.length > 0);
+    const maxAttrValue = 90;
+    const maxSumOfValues = 210;
+    const sumAttr = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
 
-    this.setState({
-      isSaveButtonDisabled: !activeButtonSave,
-    });
+    const hasInputString = isActiveString.every((string) => string.length > 0);
+    const hasInputNumbers = isActiveNumbers.every((number) => number >= 0
+    && number <= maxAttrValue);
+    const ValueSumAreCorrect = sumAttr <= maxSumOfValues;
+
+    const hasInputValue = (hasInputString && hasInputNumbers && ValueSumAreCorrect);
+    // console.log(`hasInputValue ${hasInputValue}`);
+
+    if (hasInputValue === true) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
   }
-
-  // isEmpty() {
-  //   const elementos = [cardName, cardDescription, cardImage, cardRare];
-  //   elementos.forEach(((elemento) => elemento.length > 0
-  //   && this.setState({ isSaveButtonDisabled: false })));
-  // }
 
   render() {
     const {

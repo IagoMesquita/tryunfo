@@ -83,9 +83,9 @@ class Form extends React.Component {
             name="cardRare"
             id="rare"
           >
-            <option value="normal">Normal</option>
-            <option value="raro">Raro</option>
-            <option value="muito raro">Muito Raro</option>
+            <option value="Normal">normal</option>
+            <option value="Raro">raro</option>
+            <option value="Muito Raro">muito raro</option>
           </select>
         </label>
         <label htmlFor="trunfo">
