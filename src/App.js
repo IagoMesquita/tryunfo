@@ -4,12 +4,28 @@ import PropTypes from 'prop-types';
 import Form from './components/Form';
 import Card from './components/Card';
 
+const INITIAL_STATE = {
+  cardName: '',
+  cardDescription: '',
+  cardAttr1: '0',
+  cardAttr2: '0',
+  cardAttr3: '0',
+  cardImage: '',
+  cardRare: 'normal',
+  cardTrunfo: false,
+  // hasTrunfo: false,
+  isSaveButtonDisabled: true,
+  // onSaveButtonClick: false,
+};
 class App extends React.Component {
   constructor() {
     super();
 
     this.onInputChange = this.onInputChange.bind(this);
     this.isEmpty = this.isEmpty.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.resetState = this.resetState.bind(this);
+
     this.state = {
       cardName: '',
       cardDescription: '',
@@ -22,7 +38,26 @@ class App extends React.Component {
       // hasTrunfo: false,
       isSaveButtonDisabled: true,
       // onSaveButtonClick: false,
+      storageCard: [],
     };
+  }
+
+  onSaveButtonClick(event) {
+    event.preventDefault();
+    this.setState(({
+      storageCard, cardName, cardDescription, cardImage,
+      cardRare, cardAttr1, cardAttr2, cardAttr3,
+    }) => ({
+      storageCard: [...storageCard,
+        { cardName,
+          cardDescription,
+          cardImage,
+          cardRare,
+          cardAttr1,
+          cardAttr2,
+          cardAttr3 }],
+    }));
+    this.resetState();
   }
 
   onInputChange({ target }) {
@@ -31,6 +66,10 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     }, this.isEmpty);
+  }
+
+  resetState() {
+    this.setState({ ...INITIAL_STATE });
   }
 
   isEmpty() {
