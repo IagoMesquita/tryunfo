@@ -25,6 +25,7 @@ class App extends React.Component {
     this.isEmpty = this.isEmpty.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.resetState = this.resetState.bind(this);
+    this.checkedHasTrunfo = this.checkedHasTrunfo.bind(this);
 
     this.state = {
       cardName: '',
@@ -35,15 +36,21 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      // hasTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       // onSaveButtonClick: false,
       storageCard: [],
     };
   }
 
+  // checkedTrunfo () {
+  //   const { storageCard } = this.state;
+  //   storageCard.checked === true && this.setState({})
+  // }
+
   onSaveButtonClick(event) {
     event.preventDefault();
+    this.checkedHasTrunfo();
     this.setState(({
       storageCard, cardName, cardDescription, cardImage,
       cardRare, cardAttr1, cardAttr2, cardAttr3,
@@ -66,6 +73,11 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     }, this.isEmpty);
+  }
+
+  checkedHasTrunfo() {
+    const { cardTrunfo } = this.state;
+    return cardTrunfo && this.setState({ hasTrunfo: true });
   }
 
   resetState() {
@@ -109,7 +121,7 @@ class App extends React.Component {
   render() {
     const {
       cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo, isSaveButtonDisabled,
+      cardRare, cardTrunfo, isSaveButtonDisabled, hasTrunfo, checkedHasTrunfo,
     } = this.state;
 
     return (
@@ -124,10 +136,12 @@ class App extends React.Component {
           // cardImage={ cardImage }
           // cardRare={ cardRare }
           // cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
           onInputChange={ this.onInputChange }
           isEmpty={ this.isEmpty }
+          checkedHasTrunfo={ checkedHasTrunfo }
         />
         <Card
           cardName={ cardName }
@@ -138,6 +152,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
         />
       </div>
     );
