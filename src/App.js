@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Form from './components/Form';
 import Card from './components/Card';
+import ListOfCards from './components/ListOfCards';
 
 const INITIAL_STATE = {
   cardName: '',
@@ -122,6 +123,7 @@ class App extends React.Component {
     const {
       cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
       cardRare, cardTrunfo, isSaveButtonDisabled, hasTrunfo, checkedHasTrunfo,
+      storageCard,
     } = this.state;
 
     return (
@@ -152,7 +154,10 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
+          storageCard={ storageCard }
+        />
+        <ListOfCards
+          storageCard={ storageCard }
         />
       </div>
     );
