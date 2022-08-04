@@ -14,6 +14,7 @@ class ListOfCards extends React.Component {
           <h3 data-testid="attr2-card">{ card.cardAttr2 }</h3>
           <h3 data-testid="attr3-card">{ card.cardAttr3 }</h3>
           <h3 data-testid="rare-card">{ card.cardRare }</h3>
+          <button type="button" data-testid="delete-button">Excluir</button>
         </div>))
 
     );

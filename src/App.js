@@ -1,5 +1,5 @@
 import React from 'react';
-// import './App.css';
+import './App.css';
 import PropTypes from 'prop-types';
 import Form from './components/Form';
 import Card from './components/Card';
@@ -128,37 +128,41 @@ class App extends React.Component {
 
     return (
       <div className="app">
-        <Form
-          { ...this.state }
-          // cardName={ cardName }
-          // cardDescription={ cardDescription }
-          // cardAttr1={ cardAttr1 }
-          // cardAttr2={ cardAttr2 }
-          // cardAttr3={ cardAttr3 }
-          // cardImage={ cardImage }
-          // cardRare={ cardRare }
-          // cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onSaveButtonClick={ this.onSaveButtonClick }
-          onInputChange={ this.onInputChange }
-          isEmpty={ this.isEmpty }
-          checkedHasTrunfo={ checkedHasTrunfo }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          storageCard={ storageCard }
-        />
-        <ListOfCards
-          storageCard={ storageCard }
-        />
+        <div className="creatCard">
+          <Form
+            { ...this.state }
+            // cardName={ cardName }
+            // cardDescription={ cardDescription }
+            // cardAttr1={ cardAttr1 }
+            // cardAttr2={ cardAttr2 }
+            // cardAttr3={ cardAttr3 }
+            // cardImage={ cardImage }
+            // cardRare={ cardRare }
+            // cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onSaveButtonClick={ this.onSaveButtonClick }
+            onInputChange={ this.onInputChange }
+            isEmpty={ this.isEmpty }
+            checkedHasTrunfo={ checkedHasTrunfo }
+          />
+          <Card
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            storageCard={ storageCard }
+          />
+        </div>
+        <div className="listCart">
+          <ListOfCards
+            storageCard={ storageCard }
+          />
+        </div>
       </div>
     );
   }
