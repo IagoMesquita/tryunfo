@@ -79,54 +79,55 @@ function App() {
     resetState();
   };
 
+  const validateForm = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    } = card;
+
+    const isActiveString = [cardName, cardDescription, cardImage, cardRare];
+    const isActiveNumbers = [
+      Number(cardAttr1),
+      Number(cardAttr2),
+      Number(cardAttr3),
+    ];
+
+    const maxAttrValue = 90;
+    const maxSumOfValues = 210;
+    const sumAttr = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
+
+    const hasInputString = isActiveString.every((string) => string.length > 0);
+    const hasInputNumbers = isActiveNumbers.every(
+      (number) => number >= 0 && number <= maxAttrValue,
+    );
+    const ValueSumAreCorrect = sumAttr <= maxSumOfValues;
+
+    const hasInputValue = hasInputString && hasInputNumbers && ValueSumAreCorrect;
+
+    setIsSaveButtonDisabled(!hasInputValue);
+  };
+
   const onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     setCard({ ...card, [name]: value });
+
+    validateForm();
+
     // this.setState(
     //   {
     //     [name]: value,
     //   },
-    //   this.isEmpty,
+    //   this.validateForm,
     // );
   };
 
   // VERIFICA TOTAL DA PONTUACAO
-  // const isEmpty = () => {
-  //   const {
-  //     cardName,
-  //     cardDescription,
-  //     cardImage,
-  //     cardRare,
-  //     cardAttr1,
-  //     cardAttr2,
-  //     cardAttr3,
-  //   } = this.state;
-
-  //   const isActiveString = [cardName, cardDescription, cardImage, cardRare];
-  //   const isActiveNumbers = [
-  //     Number(cardAttr1),
-  //     Number(cardAttr2),
-  //     Number(cardAttr3),
-  //   ];
-
-  //   const maxAttrValue = 90;
-  //   const maxSumOfValues = 210;
-  //   const sumAttr = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
-
-  //   const hasInputString = isActiveString.every((string) => string.length > 0);
-  //   const hasInputNumbers = isActiveNumbers.every(
-  //     (number) => number >= 0 && number <= maxAttrValue,
-  //   );
-  //   const ValueSumAreCorrect = sumAttr <= maxSumOfValues;
-
-  //   const hasInputValue = hasInputString && hasInputNumbers && ValueSumAreCorrect;
-  //   // console.log(`hasInputValue ${hasInputValue}`);
-
-  //   this.setState({
-  //     isSaveButtonDisabled: !hasInputValue,
-  //   });
-  // };
 
   return (
     <div className="app">
@@ -145,7 +146,7 @@ function App() {
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ onSaveButtonClick }
           onInputChange={ onInputChange }
-          // isEmpty={ isEmpty }
+          // validateForm={ validateForm }
           // checkedHasTrunfo={ checkedHasTrunfo }
         />
         <Card
@@ -168,7 +169,7 @@ function App() {
 }
 // App.propTypes = {
 //   onInputChange: PropTypes.func.isRequired,
-//   isEmpty: PropTypes.func.isRequired,
+//   validateForm: PropTypes.func.isRequired,
 //   maxAttrValue: PropTypes.number.isRequired,
 //   maxSumOfValues: PropTypes.number.isRequired,
 //   sumAttr: PropTypes.number.isRequired,
