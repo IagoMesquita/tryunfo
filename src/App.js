@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 
 // eslint-disable-next-line import/no-unresolved, import/no-useless-path-segments
 import '../src/styles/global.sass';
@@ -79,7 +79,7 @@ function App() {
     resetState();
   };
 
-  const validateForm = () => {
+  const validateForm = useCallback(() => {
     const {
       cardName,
       cardDescription,
@@ -110,14 +110,14 @@ function App() {
     const hasInputValue = hasInputString && hasInputNumbers && ValueSumAreCorrect;
 
     setIsSaveButtonDisabled(!hasInputValue);
-  };
+  }, [card]);
 
   const onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     setCard({ ...card, [name]: value });
 
-    validateForm();
+    // validateForm();
 
     // this.setState(
     //   {
@@ -127,7 +127,9 @@ function App() {
     // );
   };
 
-  // VERIFICA TOTAL DA PONTUACAO
+  useEffect(() => {
+    validateForm();
+  }, [card, validateForm]);
 
   return (
     <div className="app">
