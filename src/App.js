@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import './App.css';
+
+// eslint-disable-next-line import/no-unresolved, import/no-useless-path-segments
+import '../src/styles/global.sass';
+import styles from './App.module.sass';
+
 import Form from './components/Form';
 import Card from './components/Card';
 import ListOfCards from './components/ListOfCards';
@@ -126,7 +130,7 @@ function App() {
 
   return (
     <div className="app">
-      <div className="creatCard">
+      <div className={ styles.creatCard }>
         <Form
           card={ card }
           // cardName={ cardName }
@@ -156,9 +160,9 @@ function App() {
           storageCard={ storageCard }
         />
       </div>
-      <div className="listCart">
+      <s>
         <ListOfCards storageCard={ storageCard } />
-      </div>
+      </s>
     </div>
   );
 }
