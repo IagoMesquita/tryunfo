@@ -1,5 +1,7 @@
 ### Status Projeto
-Em andamento...
+#### Em construção  :construction:
+O projete foi inicialmente feito em react com classes, e está sendo refatorada para funcions.
+Além de outras melehorias como TypeScript
 
 #### Adendo
 Setup do ESlint implementado pela equipe da TRYBE
@@ -14,3 +16,26 @@ e renderiza-lás na tela.
 - Salvar e Excluir cartas
 - Apenas uma carta poderá ser "Super Trunfo"
 
+## Clonando Projeto
+
+Clone com SSH
+
+```bash
+  git clone git@github.com:IagoMesquita/tryunfo.git
+```
+## Instalação
+
+Instale project-tryunfo com npm
+
+```bash
+  cd project-tryunfo
+  npm install 
+```
+    
+## Iniciar
+
+Execute a aplicação 
+
+```bash
+npm start
+```
